@@ -1,10 +1,124 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>电影订票系统后台</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            background: url("images/login-m-bg.png") no-repeat;
+        }
+
+        .container {
+            width: 420px;
+            height: 320px;
+            min-height: 320px;
+            max-height: 320px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+            padding: 20px;
+            z-index: 130;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 18px rgba(100, 0, 0, .5);
+            font-size: 16px;
+        }
+
+        .layui-input {
+            border-radius: 5px;
+            width: 300px;
+            height: 40px;
+            font-size: 15px;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .layui-form-item {
+            margin-left: -20px;
+        }
+
+        #logoid {
+            margin-top: -16px;
+            padding-left: 100px;
+            padding-bottom: 15px;
+        }
+
+        .layui-btn {
+            margin-left: -50px;
+            border-radius: 5px;
+            width: 350px;
+            height: 40px;
+            font-size: 15px;
+            margin-top: 35px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-
+<form class="layui-form" action="" method="post">
+    <div class="container">
+        <div class="layui-form-mid layui-word-aux" style="margin-top: 20px;">
+            <h2 id="logoid">电影售票管理后台</h2>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="margin-top: 40px;">用户名</label>
+            <div class="layui-input-block" style="padding-top: 20px;">
+                <input type="text" name="title" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label" style="margin-top: 20px;">密 &nbsp;&nbsp;码</label>
+            <div class="layui-input-inline">
+                <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                       autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit lay-filter="mLogin">登陆</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script>
+    layui.use(['form', 'layer'], function () {
+        var form = layui.form, layer = layui.layer;
+        form.on('submit(mLogin)', function (data) {
+            $.ajax({
+                type: 'post',
+                url: '${pageContext.request.contextPath}/UserController/userLogin',
+                dataType: "json",
+                data: data.field,
+                success: function (login) {
+                    if (login.code == 0) {
+                        layer.open({
+                            title: '温馨提示'
+                            , content: '账户或者密码错误'
+                        });
+                    } else {
+                        if (login.type == 3) {
+                            window.location.href = "${pageContext.request.contextPath}/UserController/accessList"
+                        } else if (login.type == 2) {
+                            window.location.href = "${pageContext.request.contextPath}/HomeController/homeUI"
+                        } else if (login.type == 1) {
+                            window.location.href = "${pageContext.request.contextPath}/HomeController/homeUI"
+                        }
+                    }
+                }
+            });
+            return false;
+        })
+    });
+</script>
 </body>
 </html>
