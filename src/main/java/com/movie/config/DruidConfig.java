@@ -40,7 +40,6 @@ public class DruidConfig {
         //允许谁能访问
         initParameters.put("allow","");
         //禁止谁能访问
-        //initParameters.put("deny","192.168.11.11");
         initParameters.put("deny","192.168.11.11");
         //设置初始化参数
         bean.setInitParameters(initParameters);
