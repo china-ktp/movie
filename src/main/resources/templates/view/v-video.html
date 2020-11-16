@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>明星专访区</title>
+    <meta name="keywords" content="前端模板">
+    <meta name="description" content="前端模板">
+    <script src="js/jquery/jquery-2.1.4.min.js" type="text/javascript"></script>
+    <script src="layui/layui.js" type="text/javascript"></script>
+    <script src="js/index/index.js" type="text/javascript"></script>
+    <script src="js/index/freezeheader.js" type="text/javascript"></script>
+    <script src="layui/lay/modules/layer.js" type="text/javascript"></script>
+    <script src="js/index/sliders.js" type="text/javascript"></script>
+    <script src="js/index/html5.js" type="text/javascript"></script>
+    <script src="js/index/article.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="layui/css/layui.css" media="all"/>
+    <link rel="stylesheet" href="layui/css/modules/layer/default/layer.css"/>
+    <link rel="stylesheet" href="css/global.css"/>
+    <script type="text/javascript">
+
+    </script>
+    <!--
+    -->
+</head>
+<body>
+<div class="layui-header header">
+    <div class="main">
+        <ul class="layui-nav layui-nav-left" lay-filter="filter">
+            <a class="logo" href="index.html" title="Fly">Fly</a>
+            <li class="layui-nav-item layui-this nav-left">
+                <a href="index.html">首页</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="article.html">明星专访区</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="time_line.html">时讯</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="time_line.html">电影分类</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="">购物专栏</a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="time_line.html">我的小世界</a>
+            </li>
+        </ul>
+        <ul class="layui-nav layui-layout-right layui-nav-right" lay-filter="filter">
+
+            <li class="layui-nav-item">
+                <a href="login.html">登录/注册<span class="layui-badge-dot"></span></a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="javascript:;"><img src="images/head.jpg" class="layui-nav-img">我</a>
+                <dl class="layui-nav-child">
+                    <dd><a href="javascript:;">修改信息</a></dd>
+                    <dd><a href="javascript:;">安全管理</a></dd>
+                    <dd><a href="javascript:;">退了</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="layui-container container">
+
+    <div class="layui-row layui-col-space20">
+        <div class="layui-col-md8">
+            <div>
+              <span class="layui-breadcrumb">
+          <a href="index.html">首页</a>
+          <a><cite>采访</cite></a>
+        </span>
+                <hr class="layui-bg-red">
+                <div class="article-list" style="padding-top:10px;">
+                    <video   controls="controls" class="">
+                        <source src="video/chenglong.mp4" type="video/mp4">
+                        </source>
+
+                    </video>
+                    <ul>
+                        <h3>
+                            <a href="article_details.html">打不死的成龙</a>
+                        </h3>
+
+                        <p>杨谰访谈录.成龙-我做大哥很多年. 1</p>
+
+                        <p class="autor">
+                            <span class="lm f_l"><a href="#">热门明星</a></span>
+                            <span class="viewnum f_r">浏览（<a href="#">10w+</a>）</span>
+                            <span class="pingl f_r">评论（<a href="#">10w+</a>）</span></p>
+                    </ul>
+                </div>
+
+                <div class="article-list">
+                    <video   controls="controls" class="">
+                        <source src="video/huge.mp4" type="video/mp4">
+                        </source>
+
+                    </video>
+                    <ul>
+                        <h3>
+                            <a href="article_details.html">胡歌</a>
+                        </h3>
+
+                        <p>专访胡歌刘诗诗：演情侣时间太短了</p>
+
+                        <p class="autor">
+                            <span class="lm f_l"><a href="#">热门明星</a></span>
+                            <span class="viewnum f_r">浏览（<a href="#">10w+</a>）</span>
+                            <span class="pingl f_r">评论（<a href="#">10w+</a>）</span></p>
+                    </ul>
+                </div>
+                <div class="article-list">
+                    <video   controls="controls" class="">
+                        <source src="video/wangbaoqiang.mp4" type="video/mp4">
+                        </source>
+
+                    </video>
+                    <ul>
+                        <h3>
+                            <a href="article_details.html">王宝强</a>
+                        </h3>
+
+                        <p>王宝强获亚太银屏奖最佳男演员奖 专访王宝强</p>
+
+                        <p class="autor">
+                            <span class="lm f_l"><a href="#">热门明星</a></span>
+                            <span class="viewnum f_r">浏览（<a href="#">10w+</a>）</span>
+                            <span class="pingl f_r">评论（<a href="#">10w+</a>）</span></p>
+                    </ul>
+                </div>
+                <div class="article-list">
+                    <video   controls="controls" class="">
+                        <source src="video/liudehua.mp4" type="video/mp4">
+                        </source>
+
+                    </video>
+                    <ul>
+                        <h3>
+                            <a href="article_details.html">刘德华</a>
+                        </h3>
+
+                        <p>他们一见面，刘德华就和江妍握手，宋丹丹很快停下了脚步。太有趣了</p>
+
+                        <p class="autor">
+                            <span class="lm f_l"><a href="#">热门明星</a></span>
+                            <span class="viewnum f_r">浏览（<a href="#">10w+</a>）</span>
+                            <span class="pingl f_r">评论（<a href="#">10w+</a>）</span></p>
+                    </ul>
+                </div>
+                <div class="article-list">
+                    <video   controls="controls" class="">
+                        <source src="video/lilianjie.mp4" type="video/mp4">
+                        </source>
+
+                    </video>
+                    <ul>
+                        <h3>
+                            <a href="article_details.html">李连杰</a>
+                        </h3>
+
+                        <p>李连杰专访评价甄子丹</p>
+
+                        <p class="autor">
+                            <span class="lm f_l"><a href="#">热门明星</a></span>
+                            <span class="viewnum f_r">浏览（<a href="#">10w+</a>）</span>
+                            <span class="pingl f_r">评论（<a href="#">10w+</a>）</span></p>
+                    </ul>
+                </div>
+
+                <div class="article-list">
+                    <video   controls="controls" class="">
+                        <source src="video/gutianle.mp4" type="video/mp4">
+                        </source>
+
+                    </video>
+                    <ul>
+                        <h3>
+                            <a href="article_details.html">古天乐</a>
+                        </h3>
+
+                        <p>古天乐专访：被问为什么不谈恋爱，古仔认真的回答</p>
+
+                        <p class="autor">
+                            <span class="lm f_l"><a href="#">热门明星</a></span>
+                            <span class="viewnum f_r">浏览（<a href="#">10w+</a>）</span>
+                            <span class="pingl f_r">评论（<a href="#">10w+</a>）</span></p>
+                    </ul>
+                </div>
+            </div>
+            <!--分页-->
+            <div id="page"></div>
+        </div>
+        <div class="layui-col-md4">
+            <div class="cloud">
+                <h3>采访分类</h3>
+                <ul>
+                    <li><a href="#">搞笑明星</a></li>
+                    <li><a href="#">惊悚代表作</a></li>
+                    <li><a href="#">爱情代表作</a></li>
+                    <li><a href="#">综艺节目</a></li>
+                    <li><a href="#">恐怖代表作</a></li>
+                    <li><a href="#">年巨大作品</a></li>
+                </ul>
+            </div>
+
+            <div class="ad"><img src="images/热映/17.jpg"></div>
+            <div class="ms-top">
+                <ul class="hd" id="tab">
+                    <li class="cur"><a>热映电影</a></li>
+                    <li><a>即将播放</a></li>
+                    <li><a>电影票房排行</a></li>
+                </ul>
+            </div>
+            <div class="ms-main" id="ms-main">
+                <div style="display: block;" class="bd bd-news" >
+                    <ul>
+                        <li><a href="#" target="_blank">盗墓笔记</a></li>
+                        <li><a href="#" target="_blank">夏有乔木雅望天堂</a></li>
+                        <li><a href="#" target="_blank">美人鱼</a></li>
+                        <li><a href="#" target="_blank">大鱼海棠</a></li>
+                        <li><a href="#" target="_blank">绝地逃亡</a></li>
+                        <li><a href="#" target="_blank">万万没想到</a></li>
+                    </ul>
+                </div>
+                <div  class="bd bd-news">
+                    <ul>
+                        <li><a href="#" target="_blank">格陵兰</a></li>
+                        <li><a href="#" target="_blank">釜山行2</a></li>
+                        <li><a href="#" target="_blank">福岛50死士</a></li>
+                        <li><a href="#" target="_blank">电锯惊魂9</a></li>
+                        <li><a href="#" target="_blank">卫星</a></li>
+                        <li><a href="#" target="_blank">心理罪</a></li>
+                    </ul>
+                </div>
+                <div class="bd bd-news">
+                    <ul>
+
+                        <li><a href="#" target="_blank">战狼2</a></li>
+                        <li><a href="#" target="_blank">哪吒之魔童降世</a></li>
+                        <li><a href="#" target="_blank">流浪地球</a></li>
+                        <li><a href="#" target="_blank">复仇者联盟4：终局之战/a></li>
+                        <li><a href="#" target="_blank">红海行动</a></li>
+                        <li><a href="#" target="_blank">唐人街探案2</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="tuwen">
+                <h3>电影评价</h3>
+                <ul>
+                    <li><a href="#"><img src="images/热映/1.png"><b>值得一看、很不错</b></a>
+
+                        <p><span class="tulanmu"><a href="#">电影评价</a></span><span class="tutime">10w+</span></p>
+                    </li>
+                    <li><a href="#"><img src="images/热映/3.png"><b>没流量也要看</b></a>
+
+                        <p><span class="tulanmu"><a href="#">电影评价</a></span><span class="tutime">10w+</span></p>
+                    </li>
+                    <li><a href="#" title="看哭了很不错"><img src="images/热映/9.png"><b>继续追剧</b></a>
+
+                        <p><span class="tulanmu"><a href="#">电影评价</a></span><span class="tutime">10w+</span></p>
+                    </li>
+                    <li><a href="#"><img src="images/热映/10.png"><b>电影很有深度</b></a>
+
+                        <p><span class="tulanmu"><a href="#">电影评价</a></span><span class="tutime">10w+</span></p>
+                    </li>
+                    <li><a href="#"><img src="images/热映/6.png"><b>值得一看</b></a>
+
+                        <p><span class="tulanmu"><a href="#">电影评价</a></span><span class="tutime">10w+</span></p>
+                    </li>
+                </ul>
+            </div>
+            <div class="ad"><img src="images/热映/19.jpg"></div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <hr class="layui-bg-red">
+    <p><a href="#">电影订票系统</a> 2020 &copy; <a href="#">itdaima.com</a></p>
+    <p>电影勾画美好人生</p>
+</div>
+</body>
+</html>
