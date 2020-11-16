@@ -18,6 +18,6 @@ import lombok.ToString;
 public class MAdmin {
 
     private Integer id;
-    private String name;
+    private String mname;
     private String pass;
 }

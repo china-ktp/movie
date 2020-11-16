@@ -22,4 +22,12 @@ public class ManagementPageJump {
     public String goManagementLogin(){
         return "management/m-login";
     }
+
+    /**
+     * 登录成功进入后台管理首页
+     */
+    @RequestMapping("/goMain.m")
+    public String goMain(){
+        return "management/m-main";
+    }
 }
