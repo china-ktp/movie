@@ -19,7 +19,7 @@ public class ManagementPageJump {
      * 进入后台管理系统
      */
     @RequestMapping("/login.m")
-    public String goManagementLogin(){
+    public String goManagementLogin() {
         return "management/m-login";
     }
 
@@ -27,7 +27,39 @@ public class ManagementPageJump {
      * 登录成功进入后台管理首页
      */
     @RequestMapping("/goMain.m")
-    public String goMain(){
+    public String goMain() {
         return "management/m-main";
+    }
+
+    /**
+     * 默认展示系统首页
+     */
+    @RequestMapping("/homePage.m")
+    public String homePage() {
+        return "management/m-home-page";
+    }
+
+    /**
+     * 管理员列表
+     */
+    @RequestMapping("/adminList.m")
+    public String adminList() {
+        return "management/admin/m-admin-list";
+    }
+
+    /**
+     * 进入管理员添加页面
+     */
+    @RequestMapping("/adminSave.m")
+    public String adminSave() {
+        return "management/admin/m-admin-save";
+    }
+
+    /**
+     * 进入管理员修改页面
+     */
+    @RequestMapping("/adminEdit.m")
+    public String adminEdit() {
+        return "management/admin/m-admin-edit";
     }
 }

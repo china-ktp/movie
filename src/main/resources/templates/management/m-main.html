@@ -36,11 +36,8 @@
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right">
-            <li class="layui-nav-item"><a href="javascript:;"> <img
-                    src="${pageContext.request.contextPath}/${loginUser.flag.headImg}"
-                    class="layui-nav-img"><span style="font-size: 12px;">欢迎您
-								'${loginUser.flag.loginName}' 管理员</span>
-            </a>
+            <li class="layui-nav-item"><a href="javascript:;">
+                <span style="font-size: 13px;">欢迎您&thinsp;:&thinsp; <span th:text="${session.mname}" style="font-size: 13px;"></span>&thinsp;管理员</span> </a>
                 <dl class="layui-nav-child">
                     <dd>
                         <a href="">基本资料</a>
@@ -50,52 +47,41 @@
                     </dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="javascript:;" id="logout">退出系统</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" id="signOut">退出系统</a></li>
         </ul>
     </div>
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed"><a
-                        href="javascript:;">常用页面</a>
+                <li class="layui-nav-item layui-nav-itemed">
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="userList.jsp" class="layui-this" target="menuIframe">用户列表</a>
-                        </dd>
-                        <dd>
-                            <a href="userTypeList.jsp" target="menuIframe">用户类型列表</a>
-                        </dd>
-                        <dd>
-                            <a href="houseList.jsp" target="menuIframe">房屋列表</a>
-                        </dd>
-                        <dd>
-                            <a href="houseTypeList.jsp" target="menuIframe">房屋类型列表</a>
-                        </dd>
-                        <dd>
-                            <a href="districtList.jsp" target="menuIframe">房屋区域列表</a>
-                        </dd>
-                        <dd>
-                            <a href="commentList.jsp" target="menuIframe">评论列表</a>
-                        </dd>
-                        <dd>
-                            <a href="orderList.jsp" target="menuIframe">订单列表</a>
-                        </dd>
-                        <dd>
-                            <a href="houseImgList.jsp" target="menuIframe">房屋图片列表</a>
+                            <a href="../movie/homePage.m" class="layui-this" target="menuIframe">首页</a>
                         </dd>
                     </dl>
                 </li>
-                <li class="layui-nav-item"><a href="javascript:;">解决方案</a>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">管理员</a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;">列表一</a>
+                            <a href="../movie/adminList.m" target="menuIframe">管理员列表</a>
                         </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">用户</a>
+                    <dl class="layui-nav-child">
                         <dd>
-                            <a href="javascript:;">列表二</a>
+                            <a href="../movie/homePage.m" target="menuIframe">管理员列表</a>
                         </dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">影视</a>
+                    <dl class="layui-nav-child">
                         <dd>
-                            <a href="">超链接</a>
+                            <a href="../movie/homePage.m" target="menuIframe">管理员列表</a>
                         </dd>
                     </dl>
                 </li>
@@ -104,25 +90,19 @@
     </div>
     <div class="layui-body">
         <!-- 内容主体区域 -->
-        <div style="padding: 15px;">
-            <iframe src="userList.jsp" name="menuIframe" frameborder="none"
-                    scrolling="auto" width="100%" height="600px"></iframe>
+        <div>
+            <iframe src="../movie/homePage.m" name="menuIframe" frameborder="0"
+                    scrolling="auto" width="100%" height="690px"></iframe>
         </div>
-    </div>
-    <div class="layui-footer" style="text-align: center;">
-        <!-- 底部固定区域 -->
-        <span class="layui-breadcrumb" lay-separator="|"> <a href="">关于我们</a>
-				<a href="">社会招聘</a> <a href="">校园招聘</a> <a href="">联系自如</a> <a
-                    href="">自如采购</a> <a href="">百科</a> <a href="">综艺</a>
-			</span>
     </div>
 </div>
 <script type="text/javascript">
     layui.use(['layer', 'element', 'jquery'], function () {
-        var layer = layui.layer;
-        var element = layui.element;
-        var $ = layui.jquery;
-        $("#logout").on('click', function () {
+        const layer = layui.layer;
+        const element = layui.element;
+        const $ = layui.jquery;
+        $(".layui-body").css("bottom", 0);
+        $("#signOut").on('click', function () {
             layer.confirm("确定要离开管理员页面吗？", {
                 skin: 'layui-layer-lan',
                 icon: 2,
@@ -130,20 +110,23 @@
                 anim: 6
             }, function (index) {
                 $.ajax({
-                    url: 'user/noLogin',
+                    url: 'admin/signOut.m',
                     dateType: 'json',
                     type: 'post',
                     success: function (data) {
-                        if (data.noLogin == "noLogin") {
-                            parent.location.reload();
-                            window.location = "homePage.jsp";
+                        if (data.signOut == "signOut") {
+                            layer.msg("退出系统");
+                            setTimeout(function () {
+                                parent.location.reload();
+                                window.location = "../movie/login.m";
+                            }, 1000);
                         } else {
 
                         }
                     }
                 });
             });
-        })
+        });
     });
 </script>
 </body>
