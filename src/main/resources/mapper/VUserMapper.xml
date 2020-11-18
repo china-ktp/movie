@@ -7,6 +7,7 @@
     <resultMap type="com.movie.pojo.VUser" id="BaseResultMap">
         <id property="id" column="id" jdbcType="INTEGER"/>
         <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="pass" column="pass" jdbcType="VARCHAR"/>
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="address" column="address" jdbcType="VARCHAR"/>
         <result property="sex" column="sex" jdbcType="INTEGER"/>
@@ -14,14 +15,15 @@
     </resultMap>
 
     <sql id="v_user">
-        select id,phone,email,address,sex,name from v_user
+        select id,phone,pass,email,address,sex,name from v_user
     </sql>
     <insert id="saveVUser" parameterType="com.movie.pojo.VUser">
-          insert into v_user(phone,email,address,sex,name) values (#{phone},#{email},#{address},#{sex},#{name})
+          insert into v_user(phone,pass,email,address,sex,name) values (#{phone},#{pass},#{email},#{address},#{sex},#{name})
     </insert>
     <update id="editVUser" parameterType="com.movie.pojo.VUser">
         update v_user set
         phone=#{phone},
+        pass=#{pass},
         email=#{email},
         address=#{address},
         sex=#{sex},

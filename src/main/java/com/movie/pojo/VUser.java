@@ -19,6 +19,7 @@ public class VUser {
 
     private Integer id;
     private String phone;
+    private String pass;
     private String email;
     private String address;
     private Integer sex;

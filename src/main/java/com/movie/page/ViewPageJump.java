@@ -19,7 +19,15 @@ public class ViewPageJump {
      * 进入前台首页
      */
     @RequestMapping("/main.v")
-    public String goViewMain(){
+    public String goViewMain() {
         return "view/v-main";
+    }
+
+    /**
+     * 进入登录页面
+     */
+    @RequestMapping("/goViewLogin.v")
+    public String goViewLogin() {
+        return "view/v-login";
     }
 }
