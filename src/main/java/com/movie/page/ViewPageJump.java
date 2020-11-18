@@ -70,6 +70,7 @@ public class ViewPageJump {
     public String goViewhom() {
         return "view/v-hom";
     }
+
     /**
      * 进入首页我的小世界/用户设置
      */
@@ -77,12 +78,21 @@ public class ViewPageJump {
     public String goViewset() {
         return "view/v-mon";
     }
+
     /**
      * 进入首页我的小世界/我的消息
      */
     @RequestMapping("/goViewmessge.v")
     public String goViewmessge() {
         return "view/v-messge";
+    }
+
+    /**
+     * 进入首页电影评论
+     */
+    @RequestMapping("/goViewcomm.v")
+    public String goViewcomm() {
+        return "view/v-comment";
     }
 
 }
