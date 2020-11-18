@@ -2,6 +2,7 @@ package com.movie.controller;
 
 import com.movie.pojo.VUser;
 import com.movie.service.VUserService;
+import com.movie.utils.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +42,10 @@ public class VUSerController {
     @PostMapping("/saveVUser.v")
     @ResponseBody
     public Map<String, Object> saveVUser(VUser vUser) {
+        String pass = vUser.getPass();
+        String md5 = MD5Util.MD5(pass);
+        vUser.setPass(md5);
+        vUser.setName("user1");
         return vUserService.saveVUser(vUser);
     }
 

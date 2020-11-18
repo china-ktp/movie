@@ -23,7 +23,6 @@
     <update id="editVUser" parameterType="com.movie.pojo.VUser">
         update v_user set
         phone=#{phone},
-        pass=#{pass},
         email=#{email},
         address=#{address},
         sex=#{sex},
