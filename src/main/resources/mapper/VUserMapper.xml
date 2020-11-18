@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.mapper.VUserMapper">
+
+    <resultMap type="com.movie.pojo.VUser" id="BaseResultMap">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="phone" column="phone" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="sex" column="sex" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="v_user">
+        select id,phone,email,address,sex from v_user
+    </sql>
+    <insert id="saveVUser" parameterType="com.movie.pojo.VUser">
+          insert into v_user(phone,email,address,sex) values (#{phone},#{email},#{address},#{sex})
+    </insert>
+    <update id="editVUser" parameterType="com.movie.pojo.VUser">
+        update v_user set
+        phone=#{phone},
+        email=#{email},
+        address=#{address},
+        sex=#{sex}
+        where id=#{id}
+    </update>
+    <delete id="delVUserById" parameterType="int">
+        delete from v_user where id=#{id}
+    </delete>
+    <select id="findVUser" resultType="com.movie.pojo.VUser">
+        <include refid="v_user"></include>
+    </select>
+</mapper>

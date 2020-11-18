@@ -62,4 +62,28 @@ public class ManagementPageJump {
     public String adminEdit() {
         return "management/admin/m-admin-edit";
     }
+
+    /**
+     * 进入用户列表
+     */
+    @RequestMapping("/findVUser.v")
+    public String findVUser() {
+        return "management/user/m-user-list";
+    }
+
+    /**
+     * 进入用户添加页面
+     */
+    @RequestMapping("/saveVUser.v")
+    public String saveVUser() {
+        return "management/user/m-user-save";
+    }
+
+    /**
+     * 进入用户修改页面
+     */
+    @RequestMapping("/editVUser.v")
+    public String editVUser() {
+        return "management/user/m-user-edit";
+    }
 }
