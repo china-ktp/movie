@@ -22,4 +22,5 @@ public class VUser {
     private String email;
     private String address;
     private Integer sex;
+    private String name;
 }

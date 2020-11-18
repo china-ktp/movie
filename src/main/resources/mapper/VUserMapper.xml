@@ -10,20 +10,22 @@
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="address" column="address" jdbcType="VARCHAR"/>
         <result property="sex" column="sex" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="v_user">
-        select id,phone,email,address,sex from v_user
+        select id,phone,email,address,sex,name from v_user
     </sql>
     <insert id="saveVUser" parameterType="com.movie.pojo.VUser">
-          insert into v_user(phone,email,address,sex) values (#{phone},#{email},#{address},#{sex})
+          insert into v_user(phone,email,address,sex,name) values (#{phone},#{email},#{address},#{sex},#{name})
     </insert>
     <update id="editVUser" parameterType="com.movie.pojo.VUser">
         update v_user set
         phone=#{phone},
         email=#{email},
         address=#{address},
-        sex=#{sex}
+        sex=#{sex},
+        name=#{name}
         where id=#{id}
     </update>
     <delete id="delVUserById" parameterType="int">
