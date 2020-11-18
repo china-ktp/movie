@@ -82,13 +82,28 @@ public class MAdminController {
      * 添加一条管理员信息
      *
      * @param mAdmin
-     * @param session
      * @return
      */
     @PostMapping("/saveMAdmin.m")
     @ResponseBody
-    public Map<String, Object> saveMAdmin(MAdmin mAdmin, HttpSession session) {
-        Map<String, Object> saveMAdmin = mAdminService.saveMAdmin(mAdmin);
+    public Map<String, Object> saveMAdmin(MAdmin mAdmin) {
+        String mname = null;
+        Map<String, Object> saveMAdmin =null;
+        String pageMname = mAdmin.getMname();
+        System.out.println(pageMname);
+        List<MAdmin> mAdmins = mAdminService.mAdminList();
+        for (MAdmin admin : mAdmins) {
+            mname = admin.getMname();
+        }
+        if (!mname.equals(pageMname)){
+            saveMAdmin = mAdminService.saveMAdmin(mAdmin);
+        }else {
+            try {
+                throw new Exception("账号已经存在");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         return saveMAdmin;
     }
 
@@ -101,8 +116,7 @@ public class MAdminController {
     @PutMapping("/editMAdmin.m")
     @ResponseBody
     public Map<String, Object> editMAdmin(MAdmin mAdmin) {
-        Map<String, Object> editMAdmin = mAdminService.editMAdmin(mAdmin);
-        return editMAdmin;
+        return mAdminService.editMAdmin(mAdmin);
     }
 
     /**
@@ -114,20 +128,6 @@ public class MAdminController {
     @DeleteMapping("/delMAdminById.m")
     @ResponseBody
     public Map<String, Object> delMAdminById(Integer id) {
-        Map<String, Object> delMAdminById = mAdminService.delMAdminById(id);
-        return delMAdminById;
-    }
-
-    @GetMapping("/findMAdminByName")
-    @ResponseBody
-    public Map<String, Object> findMAdminByName(String name) {
-        List<MAdmin> findMAdminByName = mAdminService.findMAdminByName(name);
-        if (findMAdminByName != null) {
-            map.put("code", 0);
-            map.put("msg", "");
-            map.put("count", findMAdminByName.size());
-            map.put("data", findMAdminByName);
-        }
-        return map;
+        return mAdminService.delMAdminById(id);
     }
 }

@@ -24,14 +24,6 @@
     <select id="mAdminList" resultType="com.movie.pojo.MAdmin">
         <include refid="m_admin"></include>
     </select>
-    <select id="findMAdminByName" resultType="com.movie.pojo.MAdmin">
-        <include refid="m_admin"></include>
-        <where>
-            <if test="mname!=null and mname!=''">
-                mname like CONCAT(CONCAT('%',#{mname},'%'))
-            </if>
-        </where>
-    </select>
     <insert id="saveMAdmin" parameterType="com.movie.pojo.MAdmin">
         insert into m_admin(mname,pass) values (#{mname},#{pass})
     </insert>

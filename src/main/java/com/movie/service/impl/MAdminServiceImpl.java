@@ -93,16 +93,4 @@ public class MAdminServiceImpl implements MAdminService {
         }
         return map;
     }
-
-    /**
-     * 根据账号模糊查询
-     *
-     * @param name
-     * @return
-     */
-    @Override
-    public List<MAdmin> findMAdminByName(String name) {
-        return mAdminMapper.findMAdminByName(name);
-    }
-
 }

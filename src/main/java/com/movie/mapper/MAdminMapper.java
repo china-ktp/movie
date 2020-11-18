@@ -1,7 +1,6 @@
 package com.movie.mapper;
 
 import com.movie.pojo.MAdmin;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,5 +16,4 @@ public interface MAdminMapper {
 
     Integer delMAdminById(Integer id);
 
-    List<MAdmin> findMAdminByName(@Param("mname") String name);
 }

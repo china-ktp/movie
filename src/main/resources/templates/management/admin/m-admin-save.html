@@ -52,15 +52,13 @@
                 type: 'post',
                 data: data.field,
                 success: function (data) {
-                    console.log(data);
                     if (data.flag > 0) {
-                        console.log(data.flag);
                         layer.msg("添加成功！", {icon: 6, time: 1000, anim: 4}, function () {
                             parent.layer.close(parent.layer.getFrameIndex(window.name));
                             parent.location.reload();
                         });
                     } else {
-                        layer.msg("添加失败！")
+                        layer.msg("添加失败,账号已经存在")
                     }
                 }
             });
