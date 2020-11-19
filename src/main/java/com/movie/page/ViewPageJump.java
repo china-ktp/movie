@@ -30,4 +30,13 @@ public class ViewPageJump {
     public String goViewLogin() {
         return "view/v-login";
     }
+
+    /**
+     * 没有账号进入注册页面
+     */
+
+    @RequestMapping("/goRegister.v")
+    public String goRegister() {
+        return "view/v-register";
+    }
 }
