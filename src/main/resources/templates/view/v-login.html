@@ -5,7 +5,6 @@
     <link rel="Shortcut Icon" href="images/icon.png" type="image/x-icon"/>
     <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
     <script type="text/javascript" src="layui/layui.js"></script>
-    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.js"></script>
 </head>
 <style>
     html, body {
@@ -75,14 +74,12 @@
         const form = layui.form;
         const $ = layui.jquery;
         form.on('submit(vLogin)', function (data) {
-            console.log(data);
             $.ajax({
-                url: 'vuser/vUserLogin.v',
+                url: 'vuser/vUserLogin.m',
                 dateType: 'json',
                 type: 'get',
                 data: data.field,
                 success: function (data) {
-                    console.log(data);
                     let phone = $("#phone").val();
                     let pass = $("#pass").val();
                     if (data != null && phone == (data.phone) && pass == (data.pass)) {

@@ -27,7 +27,7 @@ public class VUSerController {
 
     private Map<String, Object> map = new HashMap<>();
 
-    @GetMapping("/vUserLogin.v")
+    @GetMapping("/vUserLogin.m")
     @ResponseBody
     public VUser vUserLogin(VUser vUser, HttpServletRequest request) {
         VUser vUserLogin = vUserService.vUserLogin(vUser);
@@ -38,7 +38,7 @@ public class VUSerController {
         return vUserLogin;
     }
 
-    @RequestMapping("/signOut.v")
+    @RequestMapping("/signOut.m")
     @ResponseBody
     public Map<String, Object> signOut(HttpSession session) {
         session.removeAttribute("vuser");
@@ -47,7 +47,7 @@ public class VUSerController {
         return map;
     }
 
-    @GetMapping("/findVUser.v")
+    @GetMapping("/findVUser.m")
     @ResponseBody
     public Map<String, Object> findVUser() {
         List<VUser> vUser = vUserService.findVUser();
@@ -60,7 +60,7 @@ public class VUSerController {
         return map;
     }
 
-    @PostMapping("/saveVUser.v")
+    @PostMapping("/saveVUser.m")
     @ResponseBody
     public Map<String, Object> saveVUser(VUser vUser, HttpServletRequest request) {
         String phone = null;
@@ -83,13 +83,13 @@ public class VUSerController {
         return saveVUser;
     }
 
-    @PutMapping("/editVUser.v")
+    @PutMapping("/editVUser.m")
     @ResponseBody
     public Map<String, Object> editVUser(VUser vUser) {
         return vUserService.editVUser(vUser);
     }
 
-    @DeleteMapping("/delVUserById.v")
+    @DeleteMapping("/delVUserById.m")
     @ResponseBody
     public Map<String, Object> delVUserById(Integer id) {
         return vUserService.delVUserById(id);

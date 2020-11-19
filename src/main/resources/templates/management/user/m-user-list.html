@@ -33,10 +33,9 @@
             const $ = layui.jquery;
             table.render({
                 elem: '#tableId',
-                url: 'vuser/findVUser.v',
+                url: 'vuser/findVUser.m',
                 limit: 10,
                 page: true,
-                id: 'reload',
                 cols: [
                     [
                         {field: 'id', title: 'id', width: '10%', sort: true, align: "center"},
@@ -62,7 +61,7 @@
                         maxmin: true,
                         shade: 0.5,
                         area: ['50%', '70%'],
-                        content: '../movie/editVUser.v',
+                        content: '../movie/editVUser.m',
                         zIndex: layer.zIndex,
                         success: function (layer, index) {
                             var iframe = window['layui-layer-iframe' + index];
@@ -73,7 +72,7 @@
                     layer.confirm("确定要删除吗？", {skin: 'layui-layer-lan', icon: 2, title: '提示', anim: 6}, function (index) {
                         const id = {"id": data.id};
                         $.ajax({
-                            url: 'vuser/delVUserById.v',
+                            url: 'vuser/delVUserById.m',
                             data: id,
                             dateType: 'json',
                             type: 'delete',
@@ -97,7 +96,7 @@
                     maxmin: true,
                     shade: 0.5,
                     area: ['50%', '70%'],
-                    content: '../movie/saveVUser.v',
+                    content: '../movie/saveVUser.m',
                     zIndex: layer.zIndex,
                     end: function () {
                         $(".layui-laypage-btn")[0].click();

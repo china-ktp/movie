@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>管理员列表</title>
+    <title>电影分类</title>
     <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
     <script type="text/javascript" src="layui/layui.js"></script>
 </head>
@@ -11,8 +11,8 @@
     <!--面包屑导航区域-->
     <div class="ok-body-breadcrumb">
             <span class="layui-breadcrumb">
-                <a><cite>管理员</cite></a>
-                <a><cite>管理员列表</cite></a>
+                <a><cite>影视</cite></a>
+                <a><cite>电影分类</cite></a>
             </span>
         <a class="layui-btn layui-btn-small" href="javascript:location.replace(location.href);" style="float: right">
             <i class="layui-icon layui-icon-refresh" style="font-size: 14px;">刷新</i>
@@ -20,7 +20,7 @@
     </div>
     <okToolbar>
         <button class="layui-btn" id="add" style="margin-top: 30px;">
-            <i class="layui-icon">&#xe61f;</i>添加管理员信息
+            <i class="layui-icon">&#xe61f;</i>添加电影分类
         </button>
     </okToolbar>
     <table class="layui-hide" id="tableId" lay-filter="tableFilter"></table>
@@ -33,15 +33,14 @@
             const $ = layui.jquery;
             table.render({
                 elem: '#tableId',
-                url: 'admin/mAdminList.m',
+                url: 'movieType/findMovieType.m',
                 limit: 10,
                 page: true,
                 cols: [
                     [
-                        {field: 'id', title: 'id', width: '20%', sort: true, align: "center"},
-                        {field: 'mname', title: '管理员账号', width: '25%', align: "center"},
-                        {field: 'pass', title: '管理员密码', width: '25%', align: "center"},
-                        {title: '操作', width: '30%', templet: '#operationTpl', align: 'center'}
+                        {field: 'id', title: 'id', width: '30%', sort: true, align: "center"},
+                        {field: 'vname', title: '类型名称', width: '35%', align: "center"},
+                        {title: '操作', width: '35%', templet: '#operationTpl', align: 'center'}
                     ]
                 ],
             });
@@ -51,13 +50,13 @@
                 const layEvent = obj.event;
                 if (layEvent === 'edit') {
                     layer.open({
-                        title: '编辑管理员',
+                        title: '编辑电影类别',
                         type: 2,
                         shade: false,
                         maxmin: true,
                         shade: 0.5,
-                        area: ['50%', '70%'],
-                        content: '../movie/adminEdit.m',
+                        area: ['40%', '50%'],
+                        content: '../movie/editMovieType.m',
                         zIndex: layer.zIndex,
                         success: function (layer, index) {
                             var iframe = window['layui-layer-iframe' + index];
@@ -68,7 +67,7 @@
                     layer.confirm("确定要删除吗？", {skin: 'layui-layer-lan', icon: 2, title: '提示', anim: 6}, function (index) {
                         const id = {"id": data.id};
                         $.ajax({
-                            url: 'admin/delMAdminById.m',
+                            url: 'vuser/delVUserById.v',
                             data: id,
                             dateType: 'json',
                             type: 'delete',
@@ -86,13 +85,13 @@
             });
             $("#add").click(function () {
                 layer.open({
-                    title: '添加管理员信息',
+                    title: '添加电影类别',
                     type: 2,
                     shade: false,
                     maxmin: true,
                     shade: 0.5,
-                    area: ['50%', '70%'],
-                    content: '../movie/adminSave.m',
+                    area: ['40%', '50%'],
+                    content: '../movie/saveMovieType.m',
                     zIndex: layer.zIndex,
                     end: function () {
                         $(".layui-laypage-btn")[0].click();
