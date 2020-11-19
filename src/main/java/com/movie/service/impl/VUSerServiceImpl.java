@@ -25,6 +25,11 @@ public class VUSerServiceImpl implements VUserService {
     private Map<String, Object> map = new HashMap<>();
 
     @Override
+    public VUser vUserLogin(VUser vUser) {
+        return vUserMapper.vUserLogin(vUser);
+    }
+
+    @Override
     public List<VUser> findVUser() {
         return vUserMapper.findVUser();
     }

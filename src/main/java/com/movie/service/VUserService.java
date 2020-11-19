@@ -7,6 +7,8 @@ import java.util.Map;
 
 public interface VUserService {
 
+    VUser vUserLogin(VUser vUser);
+
     List<VUser> findVUser();
 
     Map<String, Object> saveVUser(VUser vUser);

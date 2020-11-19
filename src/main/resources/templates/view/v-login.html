@@ -1,61 +1,104 @@
 <!DOCTYPE html>
 <html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="renderer" content="webkit">
     <title>用户登录</title>
     <link rel="Shortcut Icon" href="images/icon.png" type="image/x-icon"/>
-    <link rel="stylesheet" href="css/adminn.css">
-    <link rel="stylesheet" href="css/pintuer.css"/>
-    <script src="js/jquery.js"></script>
-    <script src="js/pintuer.js"></script>
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    <script type="text/javascript" src="layui/layui.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/blueimp-md5/2.18.0/js/md5.js"></script>
 </head>
-<body>
-<div class="bg"></div>
-<div class="container">
-    <div class="line bouncein">
-        <div class="xs6 xm4 xs3-move xm4-move">
-            <div style="height:150px;"></div>
-            <div class="media media-y margin-big-bottom">
-            </div>
-            <!-- <form action="index.html" method="get"> -->
-            <div class="panel loginbox">
-                <div class="text-center margin-big padding-big-top"><h1>电影订票用户系统</h1></div>
-                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
-                    <div class="form-group">
-                        <div class="field field-icon-right">
-                            <input type="text" class="input input-big" name="name" placeholder="登录账号"
-                                   data-validate="required:请填写账号"/>
-                            <span class="icon icon-user margin-small"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="field field-icon-right">
-                            <input type="password" class="input input-big" name="password" placeholder="登录密码"
-                                   data-validate="required:请填写密码"/>
-                            <span class="icon icon-key margin-small"></span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="field">
-                            <input type="text" class="input input-big" name="code" placeholder="填写右侧的验证码"
-                                   data-validate="required:请填写右侧的验证码"/>
-                            <img src="images\passcode.jpg" alt="" width="100" height="32" class="passcode"
-                                 style="height:43px;cursor:pointer;" onclick="this.src=this.src+'?'">
+<style>
+    html, body {
+        width: 100%;
+        height: 100%;
+        background: url("images/login-m-bg.png") no-repeat;
+    }
 
-                        </div>
-                    </div>
-                </div>
-                <a href="index.html">
-                    <div style="padding:30px;"><input type="submit"
-                                                      class="button button-block bg-main text-big input-big" value="登录">
-                    </div>
-                </a>
+    #div1 {
+        height: 57%;
+        width: 20%;
+        border-radius: 15px;
+        background: rgba(0, 0, 0, 0.1);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin: -14% 0 0 -10%;
+    }
+
+    .layui-input {
+        background: rgba(0, 0, 0, 0.1);
+    }
+</style>
+<body>
+<div id="div1">
+    <div class="layui-form-item">
+        <h1 align="center" style="padding-top: 25px; color: #0C0C0C">登录</h1>
+    </div>
+    <form class="layui-form layui-form-pane"
+          style="padding-left: 10px; padding-right: 10px; padding-top: 25px;">
+        <div class="layui-form-item">
+            <input type="text" lay-verify="required|phone" name="phone" id="phone"
+                   placeholder="请输入手机号" class="layui-input"
+                   style="font-size: 13px; border-radius: 10px;">
+        </div>
+        <div class="layui-form-item" style="margin-top: 20px;">
+            <input type="password" lay-verify="required" name="pass" id="pass"
+                   placeholder="密码" class="layui-input "
+                   style="font-size: 13px; border-radius: 10px">
+        </div>
+        <div class="layui-form-item " style="margin-top: 35px;">
+            <div align="center">
+                <button type="button" class="layui-btn layui-btn-fluid "
+                        lay-submit lay-filter="vLogin" style="border-radius: 10px;">登录
+                </button>
             </div>
         </div>
-    </div>
+        <div class="layui-form-item" style="margin-top: 25px;">
+            <a href="../movie/goRegister.v" style="color: #0C0C0C; font-size: 13px;">没有账号?立即注册</a>
+            <a href="register.jsp" style="color: #0C0C0C; font-size: 13px;float: right;">短信验证登录</a>
+        </div>
+        <p style="text-align: center; margin-top: 30px; font-size: 12px; color: #0C0C0C;">第三方登录>></p>
+        <div class="layui-form-item "
+             style="margin-top: 20px; text-align: center;">
+            <i class="layui-icon layui-icon-login-wechat"
+               style="font-size: 30px; color: #009688;"></i> <i
+                class="layui-icon layui-icon-login-qq "
+                style="font-size: 30px; color: #007DDB; padding-left: 50px;"></i>
+            <i class="layui-icon layui-icon-login-weibo "
+               style="font-size: 30px; color: #FD482C; padding-left: 50px;"></i>
+        </div>
+    </form>
 </div>
+<script type="text/javascript">
+    layui.use(['layer', 'form', 'jquery'], function () {
+        const layer = layui.layer;
+        const form = layui.form;
+        const $ = layui.jquery;
+        form.on('submit(vLogin)', function (data) {
+            console.log(data);
+            $.ajax({
+                url: 'vuser/vUserLogin.v',
+                dateType: 'json',
+                type: 'get',
+                data: data.field,
+                success: function (data) {
+                    console.log(data);
+                    let phone = $("#phone").val();
+                    let pass = $("#pass").val();
+                    if (data != null && phone == (data.phone) && pass == (data.pass)) {
+                        layer.msg("登录成功");
+                        setTimeout(function () {
+                            window.parent.location.reload();
+                            window.location.href = "../movie/main.v";
+                        }, 1000);
+                    } else {
+                        layer.msg("手机号密码错误");
+                    }
+                }
+            })
+            return false;
+        })
+    })
+</script>
 </body>
 </html>

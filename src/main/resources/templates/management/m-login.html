@@ -17,7 +17,6 @@
             height: 40%;
             width: 20%;
             border-radius: 15px;
-            /*box-shadow: 0 0 100px #FD482C;*/
             background: rgba(0, 0, 0, 0.1);
             position: absolute;
             left: 50%;
@@ -43,7 +42,7 @@
                    style="font-size: 13px; border-radius: 10px;">
         </div>
         <div class="layui-form-item ">
-            <input type="text" lay-verify="required" name="pass" id="pass"
+            <input type="password" lay-verify="required" name="pass" id="pass"
                    placeholder="请输入密码 " class="layui-input"
                    style="font-size: 13px; border-radius: 10px;">
         </div>
@@ -57,13 +56,13 @@
     </form>
 </div>
 <script type="text/javascript">
-    layui.use(['layer', 'form'], function () {
+    layui.use(['layer', 'form','jquery'], function () {
         const layer = layui.layer;
         const form = layui.form;
         const $ = layui.jquery;
         form.on('submit(mLogin)', function (data) {
             $.ajax({
-                url: 'admin/adminLogin-m',
+                url: 'admin/adminLogin.m',
                 dateType: 'json',
                 type: 'get',
                 data: data.field,

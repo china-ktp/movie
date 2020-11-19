@@ -22,7 +22,7 @@
             <label class="layui-form-label">用户电话</label>
             <div class="layui-input-block">
                 <input type="text" name="phone" placeholder="请输入用户电话" autocomplete="off" class="layui-input"
-                       lay-verify="phone">
+                       lay-verify="required|phone">
             </div>
         </div>
         <div class="layui-form-item" style="margin-top: 20px;">
@@ -36,7 +36,7 @@
             <label class="layui-form-label">用户邮箱</label>
             <div class="layui-input-block">
                 <input type="text" name="email" placeholder="请输入用户邮箱" autocomplete="off" class="layui-input"
-                       lay-verify="email">
+                       lay-verify="required|email">
             </div>
         </div>
         <div class="layui-form-item" style="margin-top: 20px;">
@@ -79,7 +79,7 @@
                             parent.location.reload();
                         });
                     } else {
-                        layer.msg("添加失败")
+                        layer.msg("添加失败,用户已经存在")
                     }
                 }
             });

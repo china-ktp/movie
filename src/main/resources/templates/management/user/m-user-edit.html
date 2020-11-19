@@ -22,15 +22,15 @@
         <div class="layui-form-item" style="margin-top: 20px;">
             <label class="layui-form-label">用户电话</label>
             <div class="layui-input-block">
-                <input type="text" name="phone" placeholder="请输入用户电话" autocomplete="off" class="layui-input"
-                       lay-verify="phone">
+                <input type="text" name="phone" readOnly="true" placeholder="请输入用户电话" autocomplete="off" class="layui-input"
+                       lay-verify="required|phone">
             </div>
         </div>
         <div class="layui-form-item" style="margin-top: 20px;">
             <label class="layui-form-label">用户邮箱</label>
             <div class="layui-input-block">
                 <input type="text" name="email" placeholder="请输入用户邮箱" autocomplete="off" class="layui-input"
-                       lay-verify="email">
+                       lay-verify="required|email">
             </div>
         </div>
         <div class="layui-form-item" style="margin-top: 20px;">
@@ -50,7 +50,7 @@
         <div class="layui-form-item" style="margin-top: 20px;">
             <label class="layui-form-label">用户昵称</label>
             <div class="layui-input-block">
-                <input type="text" name="name" placeholder="请输入用户昵称" autocomplete="off" class="layui-input"
+                <input type="text" name="vname" placeholder="请输入用户昵称" autocomplete="off" class="layui-input"
                        lay-verify="required">
             </div>
         </div>
@@ -72,7 +72,7 @@
             $("input[name='phone']").val(data.phone);
             $("input[name='email']").val(data.email);
             $("input[name='address']").val(data.address);
-            $("input[name='name']").val(data.name);
+            $("input[name='vname']").val(data.vname);
             form.on('submit(update)', function (data) {
                 $.ajax({
                     url: 'vuser/editVUser.v',

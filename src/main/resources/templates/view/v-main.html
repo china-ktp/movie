@@ -55,14 +55,15 @@
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right layui-nav-right" lay-filter="filter">
-            <li class="layui-nav-item">
+            <li class="layui-nav-item" th:if="${session.vuser==null&&session.vname==null}">
                 <a href="../movie/goViewLogin.v">登录/注册<span class="layui-badge-dot"></span></a>
             </li>
-            <li class="layui-nav-item">
-                <a href="javascript:;"><img src="images/heading.jpg" class="layui-nav-img">我</a>
+            <li class="layui-nav-item" th:if="${session.vuser!=null&&session.vname!=null}">
+                <a href="javascript:;"><img src="images/heading.jpg" class="layui-nav-img"><span
+                        th:text="${session.vname}" style="font-size: 13px;"></span></a>
                 <dl class="layui-nav-child">
                     <dd><a href="set.html">修改信息</a></dd>
-                    <dd><a href="javascript:;">退了</a></dd>
+                    <dd><a href="javascript:;" id="vsignOut">退了</a></dd>
                 </dl>
             </li>
         </ul>
@@ -273,5 +274,38 @@
     <p><a href="#">电影订票系统</a> 2020 &copy; <a href="#">movie.com</a></p>
     <p>电影勾画美好人生</p>
 </div>
+<script type="text/javascript">
+    layui.use(['layer', 'element', 'jquery'], function () {
+        const layer = layui.layer;
+        const element = layui.element;
+        const $ = layui.jquery;
+        $(".layui-body").css("bottom", 0);
+        $("#vsignOut").on('click', function () {
+            layer.confirm("确定要退出登录吗？", {
+                skin: 'layui-layer-lan',
+                icon: 2,
+                title: '提示',
+                anim: 6
+            }, function (index) {
+                $.ajax({
+                    url: 'vuser/signOut.v',
+                    dateType: 'json',
+                    type: 'post',
+                    success: function (data) {
+                        if (data.signOut == "signOut") {
+                            layer.msg("退出系统");
+                            setTimeout(function () {
+                                window.parent.location.reload();
+                                window.location = "../movie/main.v";
+                            }, 1000);
+                        } else {
+
+                        }
+                    }
+                });
+            });
+        });
+    });
+</script>
 </body>
 </html>

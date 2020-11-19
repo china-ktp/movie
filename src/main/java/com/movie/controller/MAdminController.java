@@ -34,7 +34,7 @@ public class MAdminController {
      * @param request
      * @return
      */
-    @GetMapping("/adminLogin-m")
+    @GetMapping("/adminLogin.m")
     @ResponseBody
     public Map<String, Object> adminLogin(MAdmin mAdmin,
                                           HttpServletRequest request) {
@@ -55,7 +55,8 @@ public class MAdminController {
     @RequestMapping("/signOut.m")
     @ResponseBody
     public Map<String, Object> signOut(HttpSession session) {
-        session.removeAttribute("map");
+        session.removeAttribute("MAdmin");
+        session.removeAttribute("mname");
         map.put("signOut", "signOut");
         return map;
     }
@@ -90,7 +91,6 @@ public class MAdminController {
         String mname = null;
         Map<String, Object> saveMAdmin =null;
         String pageMname = mAdmin.getMname();
-        System.out.println(pageMname);
         List<MAdmin> mAdmins = mAdminService.mAdminList();
         for (MAdmin admin : mAdmins) {
             mname = admin.getMname();
