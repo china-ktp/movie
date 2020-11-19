@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.movie.mapper.MovieTypeMapper">
+
+    <resultMap type="com.movie.pojo.MovieType" id="BaseResultMap">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="vname" column="vname" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="v_movie_type">
+        select id,vname from v_movie_type
+    </sql>
+    <select id="findMovieType" resultType="com.movie.pojo.MovieType">
+        <include refid="v_movie_type"></include>
+    </select>
+</mapper>

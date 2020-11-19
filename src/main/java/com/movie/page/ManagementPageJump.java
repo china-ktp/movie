@@ -66,7 +66,7 @@ public class ManagementPageJump {
     /**
      * 进入用户列表
      */
-    @RequestMapping("/findVUser.v")
+    @RequestMapping("/findVUser.m")
     public String findVUser() {
         return "management/user/m-user-list";
     }
@@ -74,7 +74,7 @@ public class ManagementPageJump {
     /**
      * 进入用户添加页面
      */
-    @RequestMapping("/saveVUser.v")
+    @RequestMapping("/saveVUser.m")
     public String saveVUser() {
         return "management/user/m-user-save";
     }
@@ -82,8 +82,32 @@ public class ManagementPageJump {
     /**
      * 进入用户修改页面
      */
-    @RequestMapping("/editVUser.v")
+    @RequestMapping("/editVUser.m")
     public String editVUser() {
         return "management/user/m-user-edit";
+    }
+
+    /**
+     * 进入电影分类列表
+     */
+    @RequestMapping("/findMovieType.m")
+    public String findMovieType() {
+        return "management/movieType/m-movie-type-list";
+    }
+
+    /**
+     * 进入电影分类添加页面
+     */
+    @RequestMapping("/saveMovieType.m")
+    public String saveMovieType() {
+        return "management/movieType/m-movie-type-save";
+    }
+
+    /**
+     * 进入电影分类编辑页面
+     */
+    @RequestMapping("/editMovieType.m")
+    public String editMovieType() {
+        return "management/movieType/m-movie-type-edit";
     }
 }

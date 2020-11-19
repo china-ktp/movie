@@ -11,14 +11,14 @@
         <result property="email" column="email" jdbcType="VARCHAR"/>
         <result property="address" column="address" jdbcType="VARCHAR"/>
         <result property="sex" column="sex" jdbcType="INTEGER"/>
-        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="vname" column="vname" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="v_user">
-        select id,phone,pass,email,address,sex,name from v_user
+        select id,phone,pass,email,address,sex,vname from v_user
     </sql>
     <insert id="saveVUser" parameterType="com.movie.pojo.VUser">
-          insert into v_user(phone,pass,email,address,sex,name) values (#{phone},#{pass},#{email},#{address},#{sex},#{name})
+          insert into v_user(phone,pass,email,address,sex,vname) values (#{phone},#{pass},#{email},#{address},#{sex},#{vname})
     </insert>
     <update id="editVUser" parameterType="com.movie.pojo.VUser">
         update v_user set
@@ -26,7 +26,7 @@
         email=#{email},
         address=#{address},
         sex=#{sex},
-        name=#{name}
+        vname=#{vname}
         where id=#{id}
     </update>
     <delete id="delVUserById" parameterType="int">
@@ -34,5 +34,11 @@
     </delete>
     <select id="findVUser" resultType="com.movie.pojo.VUser">
         <include refid="v_user"></include>
+    </select>
+    <select id="vUserLogin" resultMap="BaseResultMap" parameterType="com.movie.pojo.VUser">
+        <include refid="v_user"></include>
+        where phone=#{phone}
+        and
+        pass=#{pass}
     </select>
 </mapper>

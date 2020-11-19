@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface VUserMapper {
 
+    VUser vUserLogin(VUser vUser);
+
     List<VUser> findVUser();
 
     Integer saveVUser(VUser vUser);

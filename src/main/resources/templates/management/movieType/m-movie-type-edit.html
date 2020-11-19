@@ -11,46 +11,18 @@
     <!--面包屑导航区域-->
     <div class="ok-body-breadcrumb" style="margin: 25px 0px 0px 20px;">
             <span class="layui-breadcrumb">
-                <a><cite>用户</cite></a>
-                <a><cite>用户列表</cite></a>
-				<a><cite>编辑用户</cite></a>
+                <a><cite>影视</cite></a>
+                <a><cite>电影分类</cite></a>
+				<a><cite>编辑电影分类</cite></a>
             </span>
     </div>
     <!--form表单-->
     <form class="layui-form layui-form-pane ok-form">
         <input type="hidden" name="id" autocomplete="off" class="layui-input">
         <div class="layui-form-item" style="margin-top: 20px;">
-            <label class="layui-form-label">用户电话</label>
+            <label class="layui-form-label">类别名称</label>
             <div class="layui-input-block">
-                <input type="text" name="phone" readOnly="true" placeholder="请输入用户电话" autocomplete="off" class="layui-input"
-                       lay-verify="required|phone">
-            </div>
-        </div>
-        <div class="layui-form-item" style="margin-top: 20px;">
-            <label class="layui-form-label">用户邮箱</label>
-            <div class="layui-input-block">
-                <input type="text" name="email" placeholder="请输入用户邮箱" autocomplete="off" class="layui-input"
-                       lay-verify="required|email">
-            </div>
-        </div>
-        <div class="layui-form-item" style="margin-top: 20px;">
-            <label class="layui-form-label">用户地址</label>
-            <div class="layui-input-block">
-                <input type="text" name="address" placeholder="请输入用户地址" autocomplete="off" class="layui-input"
-                       lay-verify="required">
-            </div>
-        </div>
-        <div class="layui-form-item" style="margin-top: 20px;">
-            <label class="layui-form-label">性别</label>
-            <div class="layui-input-block">
-                <input type="radio" name="sex" value="1" title="男">
-                <input type="radio" name="sex" value="0" title="女">
-            </div>
-        </div>
-        <div class="layui-form-item" style="margin-top: 20px;">
-            <label class="layui-form-label">用户昵称</label>
-            <div class="layui-input-block">
-                <input type="text" name="vname" placeholder="请输入用户昵称" autocomplete="off" class="layui-input"
+                <input type="text" name="vname" placeholder="请输入类别名称" autocomplete="off" class="layui-input"
                        lay-verify="required">
             </div>
         </div>
@@ -75,7 +47,7 @@
             $("input[name='vname']").val(data.vname);
             form.on('submit(update)', function (data) {
                 $.ajax({
-                    url: 'vuser/editVUser.m',
+                    url: 'vuser/editVUser.v',
                     dateType: 'json',
                     type: 'put',
                     data: data.field,

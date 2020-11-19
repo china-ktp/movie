@@ -13,14 +13,12 @@
     <sql id="m_admin">
         select id,mname,pass from m_admin
     </sql>
-
     <select id="adminLogin" resultMap="BaseResultMap" parameterType="com.movie.pojo.MAdmin">
         <include refid="m_admin"></include>
         where mname=#{mname}
         and
         pass=#{pass}
     </select>
-
     <select id="mAdminList" resultType="com.movie.pojo.MAdmin">
         <include refid="m_admin"></include>
     </select>
