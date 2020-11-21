@@ -36,22 +36,7 @@
     <div class="main">
         <ul class="layui-nav layui-nav-left" lay-filter="filter">
             <li class="layui-nav-item layui-this nav-left">
-                <a href="v-main.html">首页</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="v-video.html">明星专访区</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">时讯</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">电影分类</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">购物专栏</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">我的小世界</a>
+                <a href="../movie/main.v">首页</a>
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right layui-nav-right" lay-filter="filter">
@@ -128,6 +113,7 @@
                             <a href="article_details.html">一点就到家</a>
                         </h3>
                         <p>《一点就到家》是由许宏宇执导，刘昊然、彭昱畅主演的电影，于2020年10月4日在中国内地上映。</p>
+                    </ul>
                 </div>
                 <div class="article-list">
                     <figure><img lay-src="images/热映/2.jpg"></figure>
@@ -233,12 +219,7 @@
             </div>
             <div class="cloud">
                 <h3>电影分类</h3>
-                <ul>
-                    <li><a href="#">搞笑</a></li>
-                    <li><a href="#">惊悚</a></li>
-                    <li><a href="#">爱情</a></li>
-                    <li><a href="#">综艺</a></li>
-                    <li><a href="#">恐怖</a></li>
+                <ul id="movieType">
                 </ul>
             </div>
             <div class="tuwen">
@@ -273,5 +254,59 @@
     <p><a href="#">电影订票系统</a> 2020 &copy; <a href="#">movie.com</a></p>
     <p>电影勾画美好人生</p>
 </div>
+<script type="text/javascript">
+    layui.use(['layer', 'element', 'jquery'], function () {
+        const layer = layui.layer;
+        const element = layui.element;
+        const $ = layui.jquery;
+        $(".layui-body").css("bottom", 0);
+        $("#vsignOut").on('click', function () {
+            layer.confirm("确定要退出登录吗？", {
+                skin: 'layui-layer-lan',
+                icon: 2,
+                title: '提示',
+                anim: 6
+            }, function (index) {
+                $.ajax({
+                    url: 'vuser/signOut.m',
+                    dateType: 'json',
+                    type: 'post',
+                    success: function (data) {
+                        if (data.signOut == "signOut") {
+                            layer.msg("退出系统");
+                            setTimeout(function () {
+                                window.parent.location.reload();
+                                window.location = "../movie/main.v";
+                            }, 1000);
+                        } else {
+
+                        }
+                    }
+                });
+            });
+        });
+    });
+    //这是解决页面类型的
+    layui.use(['element', 'jquery'], function () {
+        const element = layui.element;
+        const $ = layui.jquery;
+        $.ajax({
+            url: 'movieType/findMovieType.m',
+            dateType: 'json',
+            type: 'get',
+            success: function (data) {
+                if (data.data != null) {
+                    layui.each(data.data, function (index, item) {
+                        const vname = item.vname;
+                        $("#movieType").append("<li><a href='#'>" + vname + "</a></li>");
+                    })
+                    layui.form.render();
+                } else {
+                    layer.msg("获取失败")
+                }
+            }
+        });
+    });
+</script>
 </body>
 </html>
