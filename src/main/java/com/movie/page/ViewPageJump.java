@@ -39,4 +39,12 @@ public class ViewPageJump {
     public String goRegister() {
         return "view/v-register";
     }
+
+    /**
+     * 电影信息
+     */
+    @RequestMapping("/goComment.v")
+    public String goComment() {
+        return "view/v-comment";
+    }
 }
