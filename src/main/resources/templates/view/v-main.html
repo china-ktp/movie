@@ -55,14 +55,14 @@
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right layui-nav-right" lay-filter="filter">
-            <li class="layui-nav-item">
+            <li class="layui-nav-item" th:if="${session.vuser==null}">
                 <a href="../movie/goViewLogin.v">登录/注册<span class="layui-badge-dot"></span></a>
             </li>
-            <li class="layui-nav-item">
+            <li class="layui-nav-item" th:if="${session.vuser!=null}">
                 <a href="javascript:;"><img src="images/heading.jpg" class="layui-nav-img">我</a>
                 <dl class="layui-nav-child">
                     <dd><a href="set.html">修改信息</a></dd>
-                    <dd><a href="javascript:;">退了</a></dd>
+                    <dd><a href="javascript:;" id="vsignOut">退了</a></dd>
                 </dl>
             </li>
         </ul>
