@@ -36,22 +36,7 @@
     <div class="main">
         <ul class="layui-nav layui-nav-left" lay-filter="filter">
             <li class="layui-nav-item layui-this nav-left">
-                <a href="v-main.html">首页</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="v-video.html">明星专访区</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">时讯</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">电影分类</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">购物专栏</a>
-            </li>
-            <li class="layui-nav-item">
-                <a href="">我的小世界</a>
+                <a href="../movie/main.v">首页</a>
             </li>
         </ul>
         <ul class="layui-nav layui-layout-right layui-nav-right" lay-filter="filter">
@@ -230,11 +215,11 @@
             <div class="cloud">
                 <h3>电影分类</h3>
                 <ul id="movieType">
-                    <!--<li><a href="#">搞笑</a></li>
-                    <li><a href="#">惊悚</a></li>
-                    <li><a href="#">爱情</a></li>
-                    <li><a href="#">综艺</a></li>
-                    <li><a href="#">恐怖</a></li>-->
+                    <!--<li><a href="#">搞笑</a></li>-->
+                    <!--<li><a href="#">惊悚</a></li>-->
+                    <!--<li><a href="#">爱情</a></li>-->
+                    <!--<li><a href="#">综艺</a></li>-->
+                    <!--<li><a href="#">恐怖</a></li>-->
                 </ul>
             </div>
             <div class="tuwen">
@@ -299,6 +284,26 @@
                     }
                 });
             });
+        });
+    });
+    layui.use(['element', 'jquery'], function () {
+        const element = layui.element;
+        const $ = layui.jquery;
+        $.ajax({
+            url: 'movieType/findMovieType.m',
+            dateType: 'json',
+            type: 'get',
+            success: function (data) {
+                if (data.data != null) {
+                    layui.each(data.data, function (index, item) {
+                        const vname = item.vname;
+                        $("#movieType").append("<li><a href='#'>" + vname + "</a></li>");
+                    })
+                    layui.form.render();
+                } else {
+                    layer.msg("获取失败")
+                }
+            }
         });
     });
 </script>
