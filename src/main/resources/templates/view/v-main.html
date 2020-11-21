@@ -59,7 +59,8 @@
                 <a href="../movie/goViewLogin.v">登录/注册<span class="layui-badge-dot"></span></a>
             </li>
             <li class="layui-nav-item" th:if="${session.vuser!=null}">
-                <a href="javascript:;"><img src="images/heading.jpg" class="layui-nav-img">我</a>
+                <a href="javascript:;"><img src="images/heading.jpg" class="layui-nav-img"><span
+                        th:text="${session.vname}" style="font-size: 13px;"></span></a>
                 <dl class="layui-nav-child">
                     <dd><a href="set.html">修改信息</a></dd>
                     <dd><a href="javascript:;" id="vsignOut">退了</a></dd>
@@ -77,29 +78,29 @@
                 <div class="layui-carousel" id="images-carousel">
                     <div carousel-item>
                         <div>
-                            <a href="article_details.html"><img lay-src="images/轮播图/b1.jpg" width="100%"
+                            <a href="../movie/main.v"><img lay-src="images/rotation/b1.jpg" width="100%"
                                                                 height="280px;"/></a>
                         </div>
                         <div>
-                            <img lay-src="images/轮播图/b2.jpg" width="100%" height="280px;"/>
+                            <img lay-src="images/rotation/b2.jpg" width="100%" height="280px;"/>
                         </div>
                         <div>
-                            <img lay-src="images/轮播图/b3.png" width="100%" height="280px;"/>
+                            <img lay-src="images/rotation/b3.png" width="100%" height="280px;"/>
                         </div>
                         <div>
-                            <img lay-src="images/轮播图/b4.png" width="100%" height="280px;"/>
+                            <img lay-src="images/rotation/b4.png" width="100%" height="280px;"/>
                         </div>
                         <div>
-                            <img lay-src="images/轮播图/b5.png" width="100%" height="280px;"/>
+                            <img lay-src="images/rotation/b5.png" width="100%" height="280px;"/>
                         </div>
                         <div>
-                            <img lay-src="static/images/轮播图/b6.png" width="100%" height="280px;"/>
+                            <img lay-src="static/rotation/轮播图/b6.png" width="100%" height="280px;"/>
                         </div>
                         <div>
-                            <img lay-src="static/images/轮播图/b7.jpg" width="100%" height="280px;"/>
+                            <img lay-src="static/rotation/轮播图/b7.jpg" width="100%" height="280px;"/>
                         </div>
                         <div>
-                            <img lay-src="static/images/轮播图/b8.png" width="100%" height="280px;"/>
+                            <img lay-src="static/rotation/轮播图/b8.png" width="100%" height="280px;"/>
                         </div>
                     </div>
                 </div>

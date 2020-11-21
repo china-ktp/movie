@@ -87,17 +87,17 @@ public class MAdminController {
      */
     @PostMapping("/saveMAdmin.m")
     @ResponseBody
-    public Map<String, Object> saveMAdmin(MAdmin mAdmin) {
+    public Map<String, Object> saveMAdmin(MAdmin mAdmin, HttpServletRequest request) {
         String mname = null;
-        Map<String, Object> saveMAdmin =null;
-        String pageMname = mAdmin.getMname();
+        Map<String, Object> saveMAdmin = null;
+        String pageMname = request.getParameter("mname");
         List<MAdmin> mAdmins = mAdminService.mAdminList();
         for (MAdmin admin : mAdmins) {
             mname = admin.getMname();
         }
-        if (!mname.equals(pageMname)){
+        if (!mname.equals(pageMname)) {
             saveMAdmin = mAdminService.saveMAdmin(mAdmin);
-        }else {
+        } else {
             try {
                 throw new Exception("账号已经存在");
             } catch (Exception e) {
